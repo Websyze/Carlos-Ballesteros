@@ -98,6 +98,48 @@
             <li>Correo: carlos.ballesteros@ejemplo.com</li>
             <li>Ciudad: Barranquilla, Colombia</li>
           </ul>
+
+          <form class="form" id="form-contacto" novalidate>
+            <div class="form__group">
+              <label class="form__label" for="nombre">Nombre</label>
+              <input
+                class="form__input"
+                type="text"
+                id="nombre"
+                name="nombre"
+                required
+                minlength="2"
+                autocomplete="name"
+              />
+            </div>
+
+            <div class="form__group">
+              <label class="form__label" for="correo">Correo</label>
+              <input
+                class="form__input"
+                type="email"
+                id="correo"
+                name="correo"
+                required
+                autocomplete="email"
+              />
+            </div>
+
+            <div class="form__group">
+              <label class="form__label" for="mensaje">Mensaje</label>
+              <textarea
+                class="form__input"
+                id="mensaje"
+                name="mensaje"
+                rows="4"
+                required
+                minlength="10"
+              ></textarea>
+            </div>
+
+            <button class="form__btn" type="submit">Enviar mensaje</button>
+            <p class="form__feedback" id="form-feedback" role="status" aria-live="polite"></p>
+          </form>
         </section>
 
         <footer class="footer">

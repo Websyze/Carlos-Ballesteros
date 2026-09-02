@@ -103,3 +103,79 @@
       : sections[0].id;
   setActive(initialId);
 })();
+
+/**
+ * Validación del formulario de contacto.
+ * El sitio es estático (sin servidor), así que sólo valida en el
+ * navegador y muestra un mensaje de confirmación.
+ */
+(function () {
+  'use strict';
+
+  var form = document.getElementById('form-contacto');
+  if (!form) return;
+
+  var feedback = document.getElementById('form-feedback');
+  var campos = {
+    nombre: form.elements.nombre,
+    correo: form.elements.correo,
+    mensaje: form.elements.mensaje
+  };
+
+  function mostrar(mensaje, ok) {
+    feedback.textContent = mensaje;
+    feedback.classList.toggle('is-ok', ok);
+    feedback.classList.toggle('is-error', !ok);
+  }
+
+  function validar() {
+    var errores = [];
+
+    if (campos.nombre.value.trim().length < 2) {
+      errores.push(campos.nombre);
+    }
+    // Validación de email: usa la del navegador + un patrón básico
+    var correo = campos.correo.value.trim();
+    if (!correo || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) {
+      errores.push(campos.correo);
+    }
+    if (campos.mensaje.value.trim().length < 10) {
+      errores.push(campos.mensaje);
+    }
+
+    Object.keys(campos).forEach(function (k) {
+      campos[k].classList.remove('is-invalid');
+    });
+    errores.forEach(function (campo) {
+      campo.classList.add('is-invalid');
+    });
+
+    return errores;
+  }
+
+  // Quita el error de un campo en cuanto el usuario lo corrige
+  Object.keys(campos).forEach(function (k) {
+    campos[k].addEventListener('input', function () {
+      campos[k].classList.remove('is-invalid');
+    });
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var errores = validar();
+
+    if (errores.length) {
+      mostrar('Revisa los campos marcados antes de enviar.', false);
+      errores[0].focus();
+      return;
+    }
+
+    mostrar(
+      '¡Gracias, ' +
+        campos.nombre.value.trim() +
+        '! Tu mensaje se ha registrado correctamente.',
+      true
+    );
+    form.reset();
+  });
+})();

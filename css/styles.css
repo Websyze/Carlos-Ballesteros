@@ -164,6 +164,80 @@ ul {
   margin-top: 8px;
 }
 
+/* ===== Formulario de contacto ===== */
+.form {
+  margin-top: 24px;
+  max-width: 480px;
+}
+
+.form__group {
+  margin-bottom: 16px;
+}
+
+.form__label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.form__input {
+  width: 100%;
+  padding: 10px 12px;
+  font: inherit;
+  color: var(--color-text);
+  background-color: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--radius);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form__input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.15);
+}
+
+textarea.form__input {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.form__input.is-invalid {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+}
+
+.form__btn {
+  padding: 10px 22px;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.form__btn:hover {
+  background-color: var(--color-dark);
+}
+
+.form__feedback {
+  margin-top: 14px;
+  font-weight: 600;
+  min-height: 1.4em;
+}
+
+.form__feedback.is-ok {
+  color: var(--color-primary);
+}
+
+.form__feedback.is-error {
+  color: #dc2626;
+}
+
 /* ===== Footer ===== */
 .footer {
   background-color: var(--color-dark);
