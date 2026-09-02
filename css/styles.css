@@ -81,6 +81,14 @@ ul {
   color: #5eead4;
 }
 
+.nav__list a.is-active {
+  color: #5eead4;
+  font-weight: 700;
+  border-left: 3px solid var(--color-primary);
+  padding-left: 10px;
+  margin-left: -13px;
+}
+
 /* ===== Contenido ===== */
 .content {
   flex: 1;
