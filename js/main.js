@@ -107,7 +107,7 @@
 /**
  * Validación del formulario de contacto.
  * El sitio es estático (sin servidor), así que sólo valida en el
- * navegador y muestra un mensaje de confirmación.
+ * navegador y, si todo es correcto, muestra un modal de confirmación.
  */
 (function () {
   'use strict';
@@ -126,6 +126,54 @@
     feedback.textContent = mensaje;
     feedback.classList.toggle('is-ok', ok);
     feedback.classList.toggle('is-error', !ok);
+  }
+
+  // ---- Modal de confirmación (creado desde JS, sin tocar el HTML) ----
+  var modal = null;
+  var ultimoFoco = null;
+
+  function crearModal() {
+    var overlay = document.createElement('div');
+    overlay.className = 'modal';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-labelledby', 'modal-titulo');
+    overlay.innerHTML =
+      '<div class="modal__dialog">' +
+      '  <div class="modal__icon" aria-hidden="true">&#10003;</div>' +
+      '  <h3 class="modal__title" id="modal-titulo">Formulario enviado correctamente</h3>' +
+      '  <p class="modal__text">Gracias por escribir. Te responderé lo antes posible.</p>' +
+      '  <button class="modal__btn" type="button">Aceptar</button>' +
+      '</div>';
+
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) cerrarModal();
+    });
+    overlay.querySelector('.modal__btn').addEventListener('click', cerrarModal);
+
+    document.body.appendChild(overlay);
+    return overlay;
+  }
+
+  function onKeydown(e) {
+    if (e.key === 'Escape') cerrarModal();
+  }
+
+  function abrirModal() {
+    if (!modal) modal = crearModal();
+    ultimoFoco = document.activeElement;
+    modal.classList.add('is-open');
+    document.body.classList.add('modal-abierto');
+    document.addEventListener('keydown', onKeydown);
+    modal.querySelector('.modal__btn').focus();
+  }
+
+  function cerrarModal() {
+    if (!modal) return;
+    modal.classList.remove('is-open');
+    document.body.classList.remove('modal-abierto');
+    document.removeEventListener('keydown', onKeydown);
+    if (ultimoFoco && ultimoFoco.focus) ultimoFoco.focus();
   }
 
   function validar() {
@@ -170,12 +218,8 @@
       return;
     }
 
-    mostrar(
-      '¡Gracias, ' +
-        campos.nombre.value.trim() +
-        '! Tu mensaje se ha registrado correctamente.',
-      true
-    );
+    mostrar('', true);
     form.reset();
+    abrirModal();
   });
 })();
