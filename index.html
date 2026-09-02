@@ -99,7 +99,7 @@
             <li>Ciudad: Barranquilla, Colombia</li>
           </ul>
 
-          <form class="form" id="form-contacto" novalidate>
+          <form class="form" id="form-contacto">
             <div class="form__group">
               <label class="form__label" for="nombre">Nombre</label>
               <input
@@ -138,7 +138,6 @@
             </div>
 
             <button class="form__btn" type="submit">Enviar mensaje</button>
-            <p class="form__feedback" id="form-feedback" role="status" aria-live="polite"></p>
           </form>
         </section>
 
@@ -150,6 +149,16 @@
         </footer>
       </main>
     </div>
+
+    <div class="modal" id="modal-exito" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+      <div class="modal__dialog">
+        <div class="modal__icon" aria-hidden="true">&#10003;</div>
+        <h3 class="modal__title" id="modal-titulo">Formulario enviado correctamente</h3>
+        <p class="modal__text">Gracias por escribir. Te responderé lo antes posible.</p>
+        <button class="modal__btn modal__cerrar" type="button">Aceptar</button>
+      </div>
+    </div>
+
     <script src="js/main.js"></script>
   </body>
 </html>
