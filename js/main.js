@@ -1,4 +1,3 @@
-// ===== Modelo de datos: galería (arreglo de objetos) =====
 var galeriaData = [
   {
     src: 'images/imagen1.jfif',
@@ -10,7 +9,6 @@ var galeriaData = [
   }
 ];
 
-// Recorre galeriaData y crea cada tarjeta con createElement + appendChild
 function renderGaleria() {
   var contenedor = document.getElementById('galeria-contenedor');
   if (!contenedor) return;
@@ -30,7 +28,6 @@ function renderGaleria() {
   });
 }
 
-// ===== Formulario de contacto =====
 var asuntos = {
   consulta: 'Consulta general',
   propuesta: 'Propuesta de proyecto',
@@ -44,7 +41,6 @@ function initFormulario() {
   var lista = document.getElementById('lista-mensajes');
   if (!form || !modal) return;
 
-  // Crea un <li> con el resumen del mensaje y lo agrega a la lista
   function agregarMensajeALista(datos) {
     var item = document.createElement('li');
     item.className = 'mensajes__item';
@@ -73,7 +69,6 @@ function initFormulario() {
     var asunto = form.elements.asunto.value;
     var mensaje = form.elements.mensaje.value.trim();
 
-    // Validación básica: ningún campo obligatorio puede llegar vacío
     if (!nombre || !correo || !asunto || !mensaje) {
       error.textContent =
         'Completa nombre, correo, asunto y mensaje antes de enviar.';

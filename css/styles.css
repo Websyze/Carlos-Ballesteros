@@ -29,13 +29,11 @@ ul {
   list-style: none;
 }
 
-/* ===== Layout general ===== */
 .layout {
   display: flex;
   min-height: 100vh;
 }
 
-/* ===== Sidebar ===== */
 .sidebar {
   width: 260px;
   flex-shrink: 0;
@@ -81,7 +79,6 @@ ul {
   color: #5eead4;
 }
 
-/* ===== Contenido ===== */
 .content {
   flex: 1;
 }
@@ -103,7 +100,6 @@ ul {
   display: inline-block;
 }
 
-/* ===== Card (Educación) ===== */
 .card {
   background-color: #fff;
   border-left: 4px solid var(--color-primary);
@@ -117,7 +113,6 @@ ul {
   margin-bottom: 6px;
 }
 
-/* ===== Cómo quiero aprender ===== */
 .learning-list li {
   background-color: #fff;
   border-radius: var(--radius);
@@ -127,7 +122,6 @@ ul {
   border-left: 4px solid var(--color-primary);
 }
 
-/* ===== Galería ===== */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -151,12 +145,10 @@ ul {
   border-radius: calc(var(--radius) - 4px);
 }
 
-/* ===== Contacto ===== */
 .contact-list li {
   margin-top: 8px;
 }
 
-/* ===== Formulario de contacto ===== */
 .form {
   margin-top: 24px;
   max-width: 480px;
@@ -227,7 +219,6 @@ select.form__input {
   color: #dc2626;
 }
 
-/* ===== Mensajes enviados (lista dinámica) ===== */
 .mensajes {
   margin-top: 32px;
   max-width: 480px;
@@ -254,7 +245,6 @@ select.form__input {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
-/* ===== Modal de confirmación ===== */
 .modal {
   position: fixed;
   inset: 0;
@@ -338,7 +328,6 @@ select.form__input {
   }
 }
 
-/* ===== Footer ===== */
 .footer {
   background-color: var(--color-dark);
   color: #fff;
@@ -347,7 +336,6 @@ select.form__input {
   font-size: 0.85rem;
 }
 
-/* ===== Responsive ===== */
 @media (max-width: 700px) {
   .layout {
     flex-direction: column;
