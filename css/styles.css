@@ -195,6 +195,10 @@ textarea.form__input {
   min-height: 90px;
 }
 
+select.form__input {
+  cursor: pointer;
+}
+
 .form__input:user-invalid {
   border-color: #dc2626;
   box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
@@ -214,6 +218,40 @@ textarea.form__input {
 
 .form__btn:hover {
   background-color: var(--color-dark);
+}
+
+.form__error {
+  margin-top: 12px;
+  min-height: 1.4em;
+  font-weight: 600;
+  color: #dc2626;
+}
+
+/* ===== Mensajes enviados (lista dinámica) ===== */
+.mensajes {
+  margin-top: 32px;
+  max-width: 480px;
+}
+
+.mensajes__titulo {
+  font-size: 1rem;
+  color: var(--color-dark);
+  margin-bottom: 10px;
+}
+
+.mensajes__lista {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mensajes__item {
+  background-color: #fff;
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 /* ===== Modal de confirmación ===== */

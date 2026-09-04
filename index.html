@@ -9,22 +9,24 @@
   <body>
     <div class="layout">
       <aside class="sidebar">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpBO_mvTijEPWyxBpw8FVSKNgk7-v1Pm_qM-m29AvbLG4zZ3D0foJl8lzD&s=10"
-          alt="Foto de Carlos Ballesteros"
-          class="sidebar__img"
-        />
-        <p class="sidebar__name">Carlos Ballesteros</p>
-        <p class="sidebar__role">Estudiante de Ingeniería de Sistemas</p>
-        <nav class="nav">
-          <ul class="nav__list">
-            <li><a href="#sobre-mi">Sobre mí</a></li>
-            <li><a href="#educacion">Educación</a></li>
-            <li><a href="#aprendizaje">Cómo quiero aprender</a></li>
-            <li><a href="#galeria">Galería</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-          </ul>
-        </nav>
+        <header class="sidebar__header">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpBO_mvTijEPWyxBpw8FVSKNgk7-v1Pm_qM-m29AvbLG4zZ3D0foJl8lzD&s=10"
+            alt="Foto de Carlos Ballesteros"
+            class="sidebar__img"
+          />
+          <h1 class="sidebar__name">Carlos Ballesteros</h1>
+          <p class="sidebar__role">Estudiante de Ingeniería de Sistemas</p>
+          <nav class="nav">
+            <ul class="nav__list">
+              <li><a href="#sobre-mi">Sobre mí</a></li>
+              <li><a href="#educacion">Educación</a></li>
+              <li><a href="#aprendizaje">Cómo quiero aprender</a></li>
+              <li><a href="#galeria">Galería</a></li>
+              <li><a href="#contacto">Contacto</a></li>
+            </ul>
+          </nav>
+        </header>
       </aside>
 
       <main class="content">
@@ -71,24 +73,9 @@
 
         <section id="galeria" class="section section--alt">
           <h2>Galería</h2>
-          <div class="gallery">
-            <figure class="gallery__item">
-              <img
-                src="images/imagen1.jfif"
-                alt="Lionel Messi con la camiseta de la selección argentina"
-                class="gallery__img"
-                loading="lazy"
-              />
-            </figure>
-            <figure class="gallery__item">
-              <img
-                src="images/imagen2.jfif"
-                alt="Lionel Messi señalando hacia arriba con ambas manos"
-                class="gallery__img"
-                loading="lazy"
-              />
-            </figure>
-          </div>
+          <!-- Las imágenes se generan por JavaScript a partir de un arreglo
+               de objetos (ver galeriaData en js/main.js) -->
+          <div class="gallery" id="galeria-contenedor"></div>
         </section>
 
         <section id="contacto" class="section">
@@ -99,7 +86,7 @@
             <li>Ciudad: Barranquilla, Colombia</li>
           </ul>
 
-          <form class="form" id="form-contacto">
+          <form class="form" id="form-contacto" novalidate>
             <div class="form__group">
               <label class="form__label" for="nombre">Nombre</label>
               <input
@@ -126,6 +113,28 @@
             </div>
 
             <div class="form__group">
+              <label class="form__label" for="telefono">Teléfono (opcional)</label>
+              <input
+                class="form__input"
+                type="tel"
+                id="telefono"
+                name="telefono"
+                autocomplete="tel"
+                placeholder="Ej: 3001234567"
+              />
+            </div>
+
+            <div class="form__group">
+              <label class="form__label" for="asunto">Asunto</label>
+              <select class="form__input" id="asunto" name="asunto" required>
+                <option value="" disabled selected>Selecciona un asunto</option>
+                <option value="consulta">Consulta general</option>
+                <option value="propuesta">Propuesta de proyecto</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+
+            <div class="form__group">
               <label class="form__label" for="mensaje">Mensaje</label>
               <textarea
                 class="form__input"
@@ -138,7 +147,13 @@
             </div>
 
             <button class="form__btn" type="submit">Enviar mensaje</button>
+            <p class="form__error" id="form-error" role="alert"></p>
           </form>
+
+          <div class="mensajes">
+            <h3 class="mensajes__titulo">Mensajes enviados en esta sesión</h3>
+            <ul class="mensajes__lista" id="lista-mensajes"></ul>
+          </div>
         </section>
 
         <footer class="footer">
